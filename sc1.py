@@ -12,7 +12,7 @@ def list_datasets(project_id):
         print(f"Project {project_id} does not contain any datasets.")
 
 def main():
-    project_id = 'mig-gcp-cxio-w'
+    project_id = ''
     list_datasets(project_id)
 
 if __name__ == '__main__':
