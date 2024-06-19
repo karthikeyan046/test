@@ -1,4 +1,3 @@
-import json
 import urllib3
 from google.auth.transport.requests import Request  # Import Request class from google.auth.transport.requests
 
