@@ -106,11 +106,7 @@ def create_bigquery_tables(project_id, dataset_id, bigquery_schema):
 def main():
     # SQL Server connection details
     sql_server_connection_string = (
-        "DRIVER={ODBC Driver 17 for SQL Server};"
-        "SERVER=miq.database.windows.net;"
-        "DATABASE=MLPOC;"
-        "UID=mpdadmin;"
-        "PWD=wipro@123"
+       
     )
     sql_server_tables = ['data_files']  # List of SQL Server tables to read schema for
 
@@ -125,8 +121,8 @@ def main():
     bigquery_schema = convert_schema_to_bigquery(sql_server_schema)
     
     # GCP BigQuery details
-    project_id = 'mig-gcp-cxio-w'
-    dataset_id = 'example_dataset'
+    project_id = ''
+    dataset_id = ''
     
     # Create tables in BigQuery
     create_bigquery_tables(project_id, dataset_id, bigquery_schema)
