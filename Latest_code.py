@@ -120,7 +120,7 @@ def create_bigquery_table(project_id, dataset_id, table, bigquery_schema):
         print(f'Error creating table {table_id}: {e}')
 
 def get_teradata_data(query):
-    connection_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER=miq.database.windows.net;DATABASE=MLPOC;UID=mpdadmin;PWD=wipro@123'
+    connection_string = ''
     with pyodbc.connect(connection_string) as con:
         return pd.read_sql(query, con)
 
