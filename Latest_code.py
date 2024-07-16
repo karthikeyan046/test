@@ -244,8 +244,9 @@ def transfer_table(sql_server_table, bigquery_table):
    
 def main():
     # List of tables to transfer with their corresponding Teradata and BigQuery table names
-    tables_to_transfer = [
+     tables_to_transfer = [
         {"sql_server_table": "data_files","bigquery_table": f"{project_id}.{dataset_id}.data_files"},
+        {"sql_server_table": "train_labeled_erul125","bigquery_table": f"{project_id}.{dataset_id}.train_labeled_erul125"},
            # Add more tables as needed
     ]
 
