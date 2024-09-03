@@ -15,7 +15,7 @@ def hello_pubsub(cloud_event):
    
     gmail_user = os.environ.get('GMAIL_USER')
     gmail_password = os.environ.get('GMAIL_PASSWORD')  # Use App Password if 2-Step Verification is enabled
-    gmail_user='karthi20241@hotmail.com'
+    gmail_user=''
         print(gmail_user)
     print(gmail_password)
 
@@ -24,7 +24,7 @@ def hello_pubsub(cloud_event):
     msg['From'] = gmail_user
     msg['To'] = email
     msg['Subject'] = 'Alert Notification Working in GCP'
-    msg['Cc'] = 'bhavani.victory12@gmail.com'
+    msg['Cc'] = ''
     msg.attach(MIMEText(message, 'plain'))
    
     try:
