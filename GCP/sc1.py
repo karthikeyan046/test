@@ -1,5 +1,14 @@
 from google.cloud import bigquery
 
+
+import google.oauth2.credentials
+creds = google.oauth2.credentials.default()
+username = creds.id_token['email'].split('@')[0]
+print(username)
+
+
+
+
 def list_datasets(project_id):
     client = bigquery.Client(project=project_id)
 
