@@ -1,7 +1,4 @@
-Here's an example of creating a topic and subscription in Google Cloud Pub/Sub using Python:
 
-
-```
 from google.cloud import pubsub
 
 # Create Pub/Sub client
@@ -47,29 +44,4 @@ for message in response.received_messages:
     # Acknowledge message
     subscription_client.acknowledge(
         request={'subscription': subscription_path, 'ack_ids': [message.ack_id]}
-    )
-``'
-
-
-This example:
-
-
-1. Creates a topic named `my-topic`.
-2. Creates a subscription named `my-subscription` tied to `my-topic`.
-3. Publishes a message to `my-topic`.
-4. Pulls the message from `my-subscription`.
-
-
-Make sure to:
-
-
-1. Install `google-cloud-pubsub` library: `pip install google-cloud-pubsub`
-2. Set up authentication: `gcloud auth login` or `GOOGLE_APPLICATION_CREDENTIALS` environment variable
-3. Replace `my-project`, `my-topic`, and `my-subscription` with your actual values.
-
-
-Run this code to see Pub/Sub in action!
-
-
-Do you have questions about this example?
-```
+   )
