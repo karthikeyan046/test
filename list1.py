@@ -1,7 +1,4 @@
-Here's a Python example using the Google Cloud Pub/Sub Client Library to read messages from a topic:
 
-
-```
 from google.cloud import pubsub
 
 # Create clients
@@ -33,19 +30,4 @@ for message in response.received_messages:
     # Acknowledge message
     subscription_client.acknowledge(
         request={'subscription': subscription_path, 'ack_ids': [message.ack_id]}
-    )
-```
-
-Make sure to:
-
-
-1. Install the Google Cloud Pub/Sub Client Library: `pip install google-cloud-pubsub`
-2. Set up authentication: `gcloud auth login` or `GOOGLE_APPLICATION_CREDENTIALS` environment variable
-3. Replace `my-project`, `my-topic`, and `my-subscription` with your actual values.
-
-
-For more information, refer to:
-
-
-- Google Cloud Pub/Sub Documentation: (link unavailable)
-- Google Cloud Pub/Sub Client Library: (link unavailable)
+)
