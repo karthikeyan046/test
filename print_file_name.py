@@ -14,6 +14,7 @@ with open(output_file_path, 'w') as f:
     for file in files:
         # Only write files, not directories
         if os.path.isfile(os.path.join(folder_path, file)):
+            file = os.path.splitext(file)[0]
             f.write(file + '\n')
             print(file)
 
