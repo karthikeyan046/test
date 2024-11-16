@@ -1,0 +1,50 @@
+import requests
+
+def call_notify_api(status, job_name, start_time, end_time, message):
+    """
+    Calls the notify API method with the given parameters.
+
+    :param status: "success" or "failure"
+    :param job_name: Name of the job
+    :param start_time: Job start time
+    :param end_time: Job end time
+    :param message: Message to include in the notification
+    :return: Response from the API
+    """
+    url = "http://127.0.0.1:5000/notify"  # Replace with your API endpoint if deployed elsewhere
+    headers = {"Content-Type": "application/json"}
+    payload = {
+        "status": status,
+        "job_name": job_name,
+        "start_time": start_time,
+        "end_time": end_time,
+        "message": message
+    }
+
+    try:
+        response = requests.post(url, json=payload, headers=headers)
+        if response.status_code == 200:
+            print("Notification sent successfully!")
+            print("Response:", response.json())
+        else:
+            print(f"Failed to send notification. Status Code: {response.status_code}")
+            print("Response:", response.json())
+    except Exception as e:
+        print(f"Error occurred: {str(e)}")
+
+# Example Usage
+call_notify_api(
+    status="success",
+    job_name="Daily ETL Job",
+    start_time="2024-10-08 08:00:00",
+    end_time="2024-10-08 08:30:00",
+    message="Job completed successfully."
+)
+
+call_notify_api(
+    status="failure",
+    job_name="Daily ETL Job",
+    start_time="2024-10-08 08:00:00",
+    end_time="2024-10-08 08:30:00",
+    message="Database connection timeout."
+)
