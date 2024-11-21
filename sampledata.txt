@@ -1,3 +1,6 @@
+
+pip install pandas pyarrow
+
 //json
 [
     {"column1": "A", "column2": 10, "column3": 100},
