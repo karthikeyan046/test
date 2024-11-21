@@ -1,0 +1,17 @@
+//json
+[
+    {"column1": "A", "column2": 10, "column3": 100},
+    {"column1": "B", "column2": 20, "column3": 200},
+    {"column1": "C", "column2": null, "column3": 300},
+    {"column1": "D", "column2": 40, "column3": 400},
+    {"column1": "E", "column2": 50, "column3": null}
+]
+
+
+//csv
+column1,column2,column3
+A,10,100
+B,20,200
+C,,300
+D,40,400
+E,50,
