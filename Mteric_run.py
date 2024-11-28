@@ -20,9 +20,10 @@ def capture_job_metrics():
         metrics_data.append(f"{metric.name()}: {metric.value()}")
 
     # Save metrics to a text file
-    with open("job_metrics.txt", "w") as f:
+    #with open("job_metrics.txt", "w") as f:
         for metric in metrics_data:
-            f.write(metric + "\n")
+            #f.write(metric + "\n")
+            print(metric)
 
 #Run a sample Spark job
 data = [("John", 25), ("Jane", 30), ("Bob", 35)]
