@@ -1,10 +1,17 @@
-#pip install google-cloud-pubsub
 
-Option A: Using Cloud Dataflow:
-      Create a Dataflow job that reads from Pub/Sub and writes into BigQuery.
-      Use the Pub/Sub to BigQuery template available in Dataflow:
-      Go to Dataflow in Google Cloud Console.
-      Create a new job from the template.
-      Choose Pub/Sub to BigQuery.
-      Input your Pub/Sub topic (banking-transactions-topic) and BigQuery table (banking_dataset.transactions).
-      Run the job to start streaming data into BigQuery.
+from pyspark.sql import SparkSession
+
+#Create SparkSession
+spark = SparkSession.builder.appName("Job Metrics").getOrCreate()
+
+#Run a sample Spark job
+data = [("John", 25), ("Jane", 30), ("Bob", 35)]
+df = spark.createDataFrame(data, ["Name", "Age"])
+df.show()
+
+#Get metrics
+metrics = spark.metrics().getMetrics()
+
+#Print metrics
+for metric in metrics:
+    print(f"{metric.name()}: {metric.value()}")
