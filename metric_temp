@@ -1,15 +1,15 @@
 Here's an updated code snippet that writes the job metrics to a text file instead of a JSON file:
 
-```
+
 from pyspark.sql import SparkSession
 
-Create SparkSession
+#Create SparkSession
 spark = SparkSession.builder.appName("Job Metrics").getOrCreate()
 
-Get MetricsSystem
+#Get MetricsSystem
 metrics_system = spark._sc._jvm.org.apache.spark.metrics.MetricsSystem
 
-Define a function to capture job metrics
+#Define a function to capture job metrics
 def capture_job_metrics():
     # Get job metrics
     job_metrics = metrics_system.getJobMetrics()
@@ -32,15 +32,13 @@ df.show()
 Capture job metrics
 capture_job_metrics()
 
-Stop SparkSession
-spark.stop()
 ```
 
 This code will write the job metrics to a text file named `job_metrics.txt` in the current working directory.
 
 Here's an example of what the `job_metrics.txt` file might look like:
 
-```
+
 executorCpuTime: 100
 executorDeserializeCpuTime: 50
 executorDeserializeTime: 200
