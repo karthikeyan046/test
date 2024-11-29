@@ -73,6 +73,14 @@ if __name__ == "__main__":
     spark = SparkSession.builder \
         .appName("GCS Metrics Logging") \
         .getOrCreate()
+    spark = SparkSession.builder \
+    .appName("GCS Metrics Logging") \
+    .config("spark.executor.memory", "2g") \
+    .config("spark.executor.cores", "1") \
+    .config("spark.driver.memory", "1g") \
+    .config("spark.yarn.executor.memoryOverhead", "512m") \
+    .getOrCreate()
+
 
     # File paths
     input_file_path = "gs://<your-bucket-name>/example.csv"  # Replace with your GCS input path
