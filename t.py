@@ -78,6 +78,9 @@ if __name__ == "__main__":
         )
         monitor_thread.start()
 
+        # Allow some time for the monitoring thread to get started
+        time.sleep(2)
+
         # Process the input file
         read_and_transform_pyspark(input_file_path, output_file_path, spark)
 
