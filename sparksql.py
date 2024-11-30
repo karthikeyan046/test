@@ -1,5 +1,4 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import lit
 import time
 
 # Initialize Spark session
@@ -17,38 +16,45 @@ df = spark.createDataFrame(data, columns)
 # Register the DataFrame as a SQL temporary view
 df.createOrReplaceTempView("people")
 
-# Initialize a dictionary to store metrics
+# Dictionary to store metrics
 query_metrics = {}
 
 # Function to capture SQL query execution metrics
 def capture_sql_metrics(spark_context, sql_query):
-    # Get start time
-    start_time = time.time()
+    try:
+        # Get start time
+        start_time = time.time()
 
-    # Run the SQL query
-    result = spark.sql(sql_query)
+        # Run the SQL query
+        result = spark.sql(sql_query)
 
-    # Trigger query execution
-    result.collect()
+        # Trigger query execution
+        result.collect()
 
-    # Get end time
-    end_time = time.time()
+        # Get end time
+        end_time = time.time()
 
-    # Use StatusTracker to get metrics
-    status_tracker = spark_context.statusTracker()
+        # Use SparkStatusTracker to get metrics
+        status_tracker = spark_context.statusTracker()
 
-    active_jobs = status_tracker.getActiveJobsIds()
-    completed_jobs = status_tracker.getCompletedJobIds()
+        # Get all active job IDs
+        active_jobs = status_tracker.getActiveJobIds()
 
-    # Record metrics
-    query_metrics["execution_time"] = end_time - start_time
-    query_metrics["active_jobs"] = active_jobs
-    query_metrics["completed_jobs"] = completed_jobs
+        # Get completed job IDs
+        completed_jobs = status_tracker.getCompletedJobIds()
 
-    print("Query Result:")
-    result.show()
+        # Record metrics
+        query_metrics["execution_time"] = end_time - start_time
+        query_metrics["active_jobs"] = active_jobs
+        query_metrics["completed_jobs"] = completed_jobs
 
-    return query_metrics
+        print("Query Result:")
+        result.show()
+
+        return query_metrics
+    except Exception as e:
+        print(f"Error capturing SQL metrics: {e}")
+        return {}
 
 # Example SQL Query
 sql_query = "SELECT Name, Age FROM people WHERE Age > 30"
@@ -59,5 +65,3 @@ metrics = capture_sql_metrics(spark.sparkContext, sql_query)
 # Print captured metrics
 print("Captured Metrics:")
 print(metrics)
-
-
