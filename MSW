@@ -1,0 +1,42 @@
+TO NESTED_CIRCLES
+    ; Draw the outer green circle
+    SETPENCOLOR 10           ; Green color
+    CIRCLE 100               ; Radius 100
+
+    ; Move inward and draw the orange circle
+    PENUP
+    FORWARD 10               ; Move inward for spacing
+    PENDOWN
+    SETPENCOLOR 6            ; Orange color
+    CIRCLE 90                ; Radius 90
+
+    ; Move inward and draw the red circle
+    PENUP
+    FORWARD 10
+    PENDOWN
+    SETPENCOLOR 4            ; Red color
+    CIRCLE 80                ; Radius 80
+
+    ; Move inward and draw the yellow circle
+    PENUP
+    FORWARD 10
+    PENDOWN
+    SETPENCOLOR 14           ; Yellow color
+    CIRCLE 70                ; Radius 70
+
+    ; Move inward and draw the orange circle
+    PENUP
+    FORWARD 10
+    PENDOWN
+    SETPENCOLOR 6            ; Orange color
+    CIRCLE 60                ; Radius 60
+
+    ; Move inward and draw the green circle
+    PENUP
+    FORWARD 10
+    PENDOWN
+    SETPENCOLOR 10           ; Green color
+    CIRCLE 50                ; Radius 50
+END
+
+NESTED_CIRCLES
